@@ -9,7 +9,7 @@ import java.math.BigDecimal
 
 data class Forecast(val minTemp: Int, val maxTemp: Int, val description: String)
 
-open class ForecasterClient {
+open class MetOfficeForecasterClient {
     private val mapper = jacksonObjectMapper()
     private val httpClient: HttpHandler = OkHttp()
 

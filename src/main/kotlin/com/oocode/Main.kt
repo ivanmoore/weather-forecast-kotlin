@@ -1,5 +1,5 @@
-import com.teamoptimization.ForecasterClient
 import com.teamoptimization.LocatorClient
+import com.teamoptimization.MetOfficeForecasterClient
 import java.time.DayOfWeek
 
 fun main(args: Array<String>) {
@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
 }
 
 fun forecast(day: String, place: String) {
-    val forecaster = ForecasterClient()
+    val forecaster = MetOfficeForecasterClient()
     val dayNumber = DayOfWeek.valueOf(day.uppercase()).value
     val location = LocatorClient().locationOf(place)
     val (minTemp, maxTemp, description) = forecaster.forecast(dayNumber, location.lat, location.long)

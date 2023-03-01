@@ -14,7 +14,7 @@ open class MetOfficeForecasterClient {
     private val httpClient: HttpHandler = OkHttp()
 
     fun forecast(day: Int, lat: BigDecimal, long: BigDecimal): Forecast {
-        val response = httpClient(Request(Method.GET, "http://localhost:9232/forecaster/$day/$lat/$long"))
+        val response = httpClient(Request(Method.GET, "https://k7kic7lc35.execute-api.eu-west-2.amazonaws.com/api/forecaster/$day/$lat/$long"))
         return mapper.readValue(response.body.stream, Forecast::class.java)
     }
 }

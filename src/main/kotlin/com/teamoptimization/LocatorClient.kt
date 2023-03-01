@@ -14,7 +14,7 @@ open class LocatorClient {
     private val httpClient: HttpHandler = OkHttp()
 
     fun locationOf(locationName: String): Location {
-        val response = httpClient(Request(Method.GET, "http://localhost:9231/location/$locationName"))
+        val response = httpClient(Request(Method.GET, "https://jg2uit3u5j.execute-api.eu-west-2.amazonaws.com/api/location/$locationName"))
         return mapper.readValue(response.body.stream, Location::class.java)
     }
 }

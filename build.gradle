@@ -1,0 +1,30 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '2.0.20'
+    id 'application'
+}
+
+group = 'com.oocode'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.http4k:http4k-format-jackson:5.30.0.0")
+
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    testImplementation 'com.natpryce:hamkrest:1.8.0.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+application {
+    mainClassName = 'MainKt'
+}

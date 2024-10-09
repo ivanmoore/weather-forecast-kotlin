@@ -1,3 +1,4 @@
+import com.teamoptimization.AcmeForecastingClientResult
 import com.teamoptimization.acmeForecast
 import org.http4k.client.JavaHttpClient
 
@@ -10,8 +11,11 @@ fun main(args: Array<String>) {
     printForecast(args[0], args[1])
 }
 
+val cache = mutableMapOf<String, AcmeForecastingClientResult>()
+
 private fun printForecast(day: String, place: String) {
-    val acmeForecast = acmeForecast(JavaHttpClient(), day, place)
+    @Suppress("MoveLambdaOutsideParentheses")
+    val acmeForecast = cache.getOrPut("$day $place", { acmeForecast(JavaHttpClient(), day, place) })
 
     val emoji =
         if (acmeForecast.min.toInt() < 5) {
